@@ -1,0 +1,1 @@
+export { CreateArticleDto } from '@/article/dtos/create-article.dto';
