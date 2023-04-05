@@ -7,11 +7,23 @@ import {
   ApiResponse,
   ApiOperation, ApiTags,
 } from '@nestjs/swagger';
+import { ArticleService } from './article.service';
 
 @ApiBearerAuth()
 @ApiTags('articles')
 @Controller('articles')
 export class ArticleController {
+
+    constructor(private readonly articleService: ArticleService){}
+
+    @ApiOperation({ summary: 'Create article' })
+    @ApiResponse({ status: 201, description: 'The article has been successfully created.'})
+    @ApiResponse({ status: 403, description: 'Forbidden.' })
+    @Get('/:id')
+    async getArticle(@Param('id') id) : Promise<CreateArticleDto> {
+        return this.articleService.getArticleById(id);
+    }
+
     @ApiOperation({ summary: 'Create article' })
     @ApiResponse({ status: 201, description: 'The article has been successfully created.'})
     @ApiResponse({ status: 403, description: 'Forbidden.' })
