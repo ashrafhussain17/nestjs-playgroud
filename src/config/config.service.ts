@@ -22,6 +22,10 @@ export class ConfigService {
     return this.getValue('PORT', true);
   }
 
+  public getSupplyOrderBaseUri() {
+    return this.getValue('PORT', true);
+  }
+
   public isProduction() {
     const mode = this.getValue('MODE', false);
     return mode != 'DEV';

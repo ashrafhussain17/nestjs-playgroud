@@ -7,12 +7,16 @@ import { ArticleModule } from './article/article.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from '@/config/config.service';
 import { UserEntity } from '@/user/user.entity';
+import { SupplyOrderModule } from './supply-order/supply-order.module';
+import { MyEurekaModule } from './my-eureka/my-eureka.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
     UserModule,
     ArticleModule,
+    SupplyOrderModule,
+    MyEurekaModule,
   ],
   controllers: [AppController, FirstController],
   providers: [AppService],
